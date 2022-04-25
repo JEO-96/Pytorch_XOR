@@ -3,10 +3,10 @@ import torch
 device = "cuda" if torch.cuda.is_available() else "cpu"  # 장치 선택
 
 # 입력
-X = torch.Tensor([[0, 0, 1],
-                  [0, 1, 1],
-                  [1, 0, 1],
-                  [1, 1, 1]]).to(device)
+X = torch.Tensor([[0, 0],
+                  [0, 1],
+                  [1, 0],
+                  [1, 1]]).to(device)
 
 # 정답
 Y = torch.Tensor([[0],
@@ -19,8 +19,8 @@ Y = torch.Tensor([[0],
 class XOR(torch.nn.Module):
     def __init__(self):
         super().__init__()
-        self.layer1 = torch.nn.Linear(3, 5)
-        self.layer2 = torch.nn.Linear(5, 1)
+        self.layer1 = torch.nn.Linear(2, 2)
+        self.layer2 = torch.nn.Linear(2, 1)
 
     def forward(self, x):
         x = torch.relu(self.layer1(x))
